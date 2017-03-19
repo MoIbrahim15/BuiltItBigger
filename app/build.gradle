@@ -29,9 +29,16 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.google.firebase:firebase-ads:10.0.1'
     compile 'com.jakewharton:butterknife:8.5.1'
-    apt  'com.jakewharton:butterknife-compiler:8.5.1'
-    compile project(':javajokes')
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+
     compile project(':displayjokerlib')
+
+    compile project(path: ':backend', configuration: 'android-endpoints')
+
+    compile ('com.google.api-client:google-api-client-android:1.17.0-rc'){
+        exclude module: 'httpclient'
+    }
 }
 
 

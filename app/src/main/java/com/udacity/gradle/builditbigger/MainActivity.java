@@ -8,10 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.ads.MobileAds;
-import com.joker.Joker;
 import com.mohamedibrahim.displayjokerlib.JokerActivity;
 
 import static com.mohamedibrahim.displayjokerlib.JokerActivity.JOKE_EXTRA_STRING;
+
+//import com.joker.Joker;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,10 +50,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Joker joker = new Joker();
+        final Intent intent = new Intent(this, JokerActivity.class);
 
-        Intent intent = new Intent(this, JokerActivity.class);
-        intent.putExtra(JOKE_EXTRA_STRING, joker.getRandomJoke());
-        startActivity(intent);
+        new JokeAsyncTask() {
+            @Override
+            protected void onPostExecute(String joke) {
+                intent.putExtra(JOKE_EXTRA_STRING, joke);
+                startActivity(intent);
+            }
+        }.execute();
     }
 }
