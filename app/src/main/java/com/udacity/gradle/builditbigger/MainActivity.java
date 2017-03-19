@@ -1,19 +1,20 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.joker.Joker;
 import com.google.android.gms.ads.MobileAds;
+import com.joker.Joker;
+import com.mohamedibrahim.displayjokerlib.JokerActivity;
+
+import static com.mohamedibrahim.displayjokerlib.JokerActivity.JOKE_EXTRA_STRING;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
         Joker joker = new Joker();
-        if (toast != null) {
-            toast.cancel();
-        }
-        toast = Toast.makeText(this, joker.getRandomJoke(), Toast.LENGTH_SHORT);
-        toast.show();
+
+        Intent intent = new Intent(this, JokerActivity.class);
+        intent.putExtra(JOKE_EXTRA_STRING, joker.getRandomJoke());
+        startActivity(intent);
     }
-
-
 }
