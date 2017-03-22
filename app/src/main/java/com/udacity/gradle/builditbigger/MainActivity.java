@@ -1,18 +1,9 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.google.android.gms.ads.MobileAds;
-import com.mohamedibrahim.displayjokerlib.JokerActivity;
-
-import static com.mohamedibrahim.displayjokerlib.JokerActivity.JOKE_EXTRA_STRING;
-
-//import com.joker.Joker;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,8 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-1763493570283349~7034416915");
+//            MobileAds.initialize(getApplicationContext(), "ca-app-pub-1763493570283349~7034416915");
 
     }
 
@@ -47,17 +37,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void tellJoke(View view) {
-        final Intent intent = new Intent(this, JokerActivity.class);
-
-        new JokeAsyncTask() {
-            @Override
-            protected void onPostExecute(String joke) {
-                intent.putExtra(JOKE_EXTRA_STRING, joke);
-                startActivity(intent);
-            }
-        }.execute();
     }
 }
