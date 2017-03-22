@@ -46,6 +46,7 @@ public class MainFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
                 .addTestDevice("F2998E6F789E2E4227461CB9139AB42C")
+                // TODO:add your test device
                 .build();
         mAdView.loadAd(adRequest);
         mInterstitialAd = new InterstitialAd(getActivity());
@@ -88,6 +89,7 @@ public class MainFragment extends Fragment {
     private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("F2998E6F789E2E4227461CB9139AB42C")
+                // TODO:add your test device
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
